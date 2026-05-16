@@ -90,6 +90,8 @@ const frameStyle: CSSProperties = {
   gridTemplateRows: "auto 1fr auto",
   padding: "clamp(16px, 4vw, 32px)",
   gap: "14px",
+  overflow: "hidden",
+  overscrollBehavior: "none",
   transition: "padding 420ms cubic-bezier(0.4, 0, 0.2, 1), gap 420ms cubic-bezier(0.4, 0, 0.2, 1)",
 };
 

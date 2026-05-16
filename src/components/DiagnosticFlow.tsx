@@ -49,6 +49,7 @@ type EndStep = {
   eyebrow: string;
   accent: string;
   mode: Mode;
+  profileName?: string;
 };
 
 type FlowStep = IntroStep | QuestionStep | ResultStep | EndStep;
@@ -235,17 +236,21 @@ export default function DiagnosticFlow() {
     ];
   }, [answers, conclusion.cta, conclusion.message, conclusion.template, conclusion.title, profile]);
 
-  const endStep = useMemo<EndStep[]>(() => [
-    {
-      id: "flow-end",
-      kind: "end",
-      eyebrow: "Jornada Concluída",
-      title: "Obrigado por participar",
-      description: "Suas informações foram salvas com sucesso e seu diagnóstico está finalizado.",
-      accent: "Até logo",
-      mode: "cube",
-    }
-  ], []);
+  const endStep = useMemo<EndStep[]>(() => {
+    const firstName = getFirstName(answers[1]);
+    return [
+      {
+        id: "flow-end",
+        kind: "end",
+        eyebrow: "Diagnóstico concluído",
+        title: firstName ? `Obrigada, ${firstName}.` : "Obrigada.",
+        description: "Seu resultado foi salvo. Em breve você recebe os próximos passos no WhatsApp.",
+        accent: profile.phrase,
+        mode: "lens",
+        profileName: profile.name,
+      },
+    ];
+  }, [answers, profile]);
 
   const steps = useMemo<FlowStep[]>(() => {
     const questionSteps: QuestionStep[] = questions.map((question, index) => ({
@@ -644,12 +649,18 @@ export default function DiagnosticFlow() {
             )}
 
             {currentStep.kind === "end" && (
-              <div className="story-grid story-grid-single">
+              <div className="end-grid">
                 <div className="story-copy">
                   <span className="section-kicker">{currentStep.eyebrow}</span>
                   <h2>{currentStep.title}</h2>
                   <p>{currentStep.description}</p>
                 </div>
+                {currentStep.profileName && (
+                  <div className="end-badge">
+                    <span className="end-badge-label">Seu perfil</span>
+                    <strong className="end-badge-name">{currentStep.profileName}</strong>
+                  </div>
+                )}
               </div>
             )}
           </article>
@@ -1398,6 +1409,40 @@ export default function DiagnosticFlow() {
             text-wrap: balance;
           }
         }
+        .end-grid {
+          display: flex;
+          flex-direction: column;
+          gap: clamp(24px, 4vw, 36px);
+          justify-content: center;
+          height: 100%;
+        }
+
+        .end-badge {
+          display: inline-flex;
+          flex-direction: column;
+          gap: 6px;
+          padding: 16px 20px;
+          border-radius: 20px;
+          background: linear-gradient(135deg, rgba(246, 185, 142, 0.12) 0%, rgba(246, 185, 142, 0.04) 100%);
+          border: 1px solid rgba(246, 185, 142, 0.22);
+          align-self: flex-start;
+        }
+
+        .end-badge-label {
+          font-size: 0.7rem;
+          letter-spacing: 0.12em;
+          text-transform: uppercase;
+          color: rgba(246, 185, 142, 0.7);
+        }
+
+        .end-badge-name {
+          font-size: clamp(1rem, 3vw, 1.2rem);
+          font-weight: 700;
+          font-family: var(--font-display);
+          color: #fff1e7;
+          letter-spacing: -0.01em;
+        }
+
         .validation-error {
           position: absolute;
           bottom: 100%;

@@ -522,13 +522,15 @@ export default function DiagnosticFlow() {
               isQuestionStep ? "content-card-question" : ""
             }`}
           >
-            <div className={`content-meta ${isQuestionStep ? "content-meta-question" : ""}`}>
-              <span className="meta-eyebrow">
-                {getStepLabel(currentStep, questionIndex + 1, questions.length, activeIndex + 1, steps.length)}
-              </span>
-              <span className="meta-separator" />
-              <span className="meta-eyebrow">{currentStep.accent}</span>
-            </div>
+            {(currentStep.kind === "intro" || currentStep.kind === "question") && (
+              <div className={`content-meta ${isQuestionStep ? "content-meta-question" : ""}`}>
+                <span className="meta-eyebrow">
+                  {getStepLabel(currentStep, questionIndex + 1, questions.length, activeIndex + 1, steps.length)}
+                </span>
+                <span className="meta-separator" />
+                <span className="meta-eyebrow">{currentStep.accent}</span>
+              </div>
+            )}
 
             {currentStep.kind === "intro" && (
               <div className={`story-grid ${activeIndex > 0 ? "story-grid-single" : ""}`}>

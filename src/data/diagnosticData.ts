@@ -216,7 +216,7 @@ export const diagnosticData = {
   conclusion: {
     title: "Seu resultado chegou.",
     template: "Com base nas suas respostas, seu perfil comercial hoje é: {nome do perfil}.",
-    message: "Esse resultado não é uma caixinha fixa. É um retrato do seu momento atual na venda. Ele mostra onde você tende a travar, qual habilidade precisa desenvolver agora e quais ações práticas podem te ajudar a sair do automático.\n\nVenda é relacionamento puro e intencional. E quanto mais consciência você tem sobre seu jeito de vender, mais clareza você ganha para conduzir melhor cada contato.",
+    message: "Esse resultado não é uma caixinha fixa. É um retrato do seu momento atual na venda. Ele mostra onde você tende a travar, qual habilidade precisa desenvolver agora e quais ações práticas podem te ajudar a sair do automático.\n\n",
     cta: "Nos próximos dias, vamos enviar alguns materiais práticos para te ajudar a evoluir nesse ponto específico da sua venda. Pode ser um roteiro de abordagem, um checklist de pós-venda, um guia de objeções ou um plano simples de rotina comercial.\n\nA ideia é te ajudar a aplicar o que você viu hoje na prática. Porque venda boa não termina na palestra. Ela começa no próximo contato."
   }
 };

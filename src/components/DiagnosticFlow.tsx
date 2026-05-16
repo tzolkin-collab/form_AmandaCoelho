@@ -349,6 +349,12 @@ export default function DiagnosticFlow() {
     moveTo(activeIndex - 1);
   }, [activeIndex, moveTo]);
 
+  const scrollToTop = useCallback((behavior: ScrollBehavior = "smooth") => {
+    window.scrollTo({ top: 0, behavior });
+    document.documentElement.scrollTo?.({ top: 0, behavior });
+    document.body.scrollTo?.({ top: 0, behavior });
+  }, []);
+
   useEffect(() => {
     return () => {
       if (autoAdvanceRef.current) {
@@ -356,6 +362,10 @@ export default function DiagnosticFlow() {
       }
     };
   }, []);
+
+  useEffect(() => {
+    scrollToTop("auto");
+  }, [activeIndex, scrollToTop]);
 
   useEffect(() => {
     const onKeyDown = (event: KeyboardEvent) => {
@@ -435,6 +445,7 @@ export default function DiagnosticFlow() {
 
   const updateAnswer = (questionId: number, value: string) => {
     setAnswers((previous) => ({ ...previous, [questionId]: value }));
+    scrollToTop();
   };
 
   const handleRadioSelect = (question: Question, option: string) => {
@@ -445,6 +456,7 @@ export default function DiagnosticFlow() {
     }
 
     autoAdvanceRef.current = window.setTimeout(() => {
+      scrollToTop("auto");
       setDirection(1);
       setActiveIndex((previous) => Math.min(previous + 1, steps.length - 1));
     }, 320);

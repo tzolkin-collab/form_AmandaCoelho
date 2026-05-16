@@ -1231,7 +1231,6 @@ export default function DiagnosticFlow() {
           justify-content: space-between;
           gap: 16px;
           padding: 16px clamp(20px, 4vw, 32px) 20px;
-          border-top: 1px solid rgba(255, 244, 236, 0.08);
           background: linear-gradient(180deg, rgba(20, 4, 7, 0.1) 0%, rgba(20, 4, 7, 0.45) 100%);
           position: relative;
           z-index: 2;

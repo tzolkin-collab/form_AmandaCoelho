@@ -1336,6 +1336,10 @@ export default function DiagnosticFlow() {
             border-radius: 0;
           }
 
+          .instagram-card {
+            min-height: 0;
+          }
+
           .flow-header-question {
             transform: none;
           }

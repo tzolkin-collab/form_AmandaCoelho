@@ -65,7 +65,7 @@ export default function FluidGlass({
   const modeProps = mode === "bar" ? barProps : mode === "cube" ? cubeProps : lensProps;
 
   return (
-    <div style={{ position: "absolute", inset: 0 }}>
+    <div style={{ position: "absolute", inset: 0, backgroundColor: "#140407" }}>
       <Canvas camera={{ position: [0, 0, 20], fov: 15 }} gl={{ alpha: true, antialias: true }}>
         <color attach="background" args={["#140407"]} />
         <fog attach="fog" args={["#140407", 16, 28]} />

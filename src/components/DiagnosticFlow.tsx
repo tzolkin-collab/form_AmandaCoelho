@@ -70,14 +70,14 @@ const shellStyle: CSSProperties = {
   overflow: "hidden",
   color: "#fff4ec",
   background:
-    "radial-gradient(circle at top, rgba(255, 255, 255, 0.22), transparent 34%), radial-gradient(circle at bottom, rgb(255, 255, 255), transparent 30%), #ffffff",
+    "radial-gradient(circle at top, rgba(246, 185, 142, 0.14), transparent 32%), radial-gradient(circle at bottom, rgba(60, 12, 18, 0.72), transparent 42%), #140407",
 };
 
 const overlayStyle: CSSProperties = {
   position: "absolute",
   inset: 0,
   background:
-    "linear-gradient(180deg, rgba(255, 255, 255, 0.16) 0%, rgba(255, 255, 255, 0.52) 35%, rgba(255, 255, 255, 250.82) 100%)",
+    "linear-gradient(180deg, rgba(20, 4, 7, 0.08) 0%, rgba(20, 4, 7, 0.24) 36%, rgba(20, 4, 7, 0.56) 100%)",
   pointerEvents: "none",
 };
 
@@ -979,6 +979,10 @@ export default function DiagnosticFlow() {
           font-weight: 600;
           letter-spacing: -0.05em;
           max-width: 11ch;
+          word-break: normal;
+          overflow-wrap: normal;
+          hyphens: manual;
+          text-wrap: balance;
         }
 
         p {
@@ -1320,6 +1324,10 @@ export default function DiagnosticFlow() {
             transform: none;
           }
 
+          .content-meta-question {
+            display: none;
+          }
+
           .progress-shell-question {
             width: 100%;
             min-width: 0;
@@ -1364,8 +1372,10 @@ export default function DiagnosticFlow() {
 
           h1, h2 {
             font-size: clamp(1.8rem, 10vw, 2.5rem);
-            word-break: break-word;
-            hyphens: auto;
+            word-break: normal;
+            overflow-wrap: normal;
+            hyphens: manual;
+            text-wrap: balance;
           }
         }
         .validation-error {

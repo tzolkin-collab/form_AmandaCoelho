@@ -1,4 +1,4 @@
-import type { Metadata } from "next";
+import type { Metadata, Viewport } from "next";
 import { Cormorant_Garamond, Manrope } from "next/font/google";
 
 const displayFont = Cormorant_Garamond({
@@ -16,6 +16,14 @@ const bodyFont = Manrope({
 export const metadata: Metadata = {
   title: "Diagnóstico Do Contrato ao Contato",
   description: "Descubra onde sua venda trava hoje e qual deve ser seu próximo movimento",
+};
+
+export const viewport: Viewport = {
+  width: "device-width",
+  initialScale: 1,
+  maximumScale: 1,
+  userScalable: false,
+  viewportFit: "cover",
 };
 
 export default function RootLayout({
